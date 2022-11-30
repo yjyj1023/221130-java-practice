@@ -11,4 +11,8 @@ public class Teacher {
     private String name;
     private boolean isLikeAlgorithm;
     private boolean isLikeSpringBoot;
+
+    public int cntNameDigit(){
+        return this.name.length();
+    }
 }

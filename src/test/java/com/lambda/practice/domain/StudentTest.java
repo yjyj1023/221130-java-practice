@@ -25,6 +25,7 @@ class StudentTest {
         teachers.add(kyeonghwan);
         teachers.add(sujin);
         teachers.add(sohyun);
+        teachers.add(new Teacher("김경", false, true));
 
         //stream 사용 전
         List<Teacher> likeAlgorithmTeacher = new ArrayList<>();
@@ -73,6 +74,24 @@ class StudentTest {
         String[] list = {"1", "2", "3"};
         List<Integer> nums = Arrays.stream(list)
                 .map(strNum -> Integer.parseInt(strNum))
+                .collect(Collectors.toList());
+
+        List<Teacher> teachers = new ArrayList<>();
+        Teacher kyeongrok = new Teacher("김경록", true, true);
+        Teacher kyeonghwan = new Teacher("고경환", true, false);
+        Teacher sujin = new Teacher("김수진", false, true);
+        Teacher sohyun = new Teacher("강소현", true, true);
+
+        teachers.add(kyeongrok);
+        teachers.add(kyeonghwan);
+        teachers.add(sujin);
+        teachers.add(sohyun);
+        teachers.add(new Teacher("김경", false, true));
+
+        //isLikeSpringBoot == true인 Teacher의 이름의 자릿수 구하기
+        List<Integer> digitsOfNames = teachers.stream()
+                .filter(Teacher::isLikeSpringBoot)
+                .map(Teacher::cntNameDigit)
                 .collect(Collectors.toList());
     }
 }
