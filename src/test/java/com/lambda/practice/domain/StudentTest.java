@@ -139,4 +139,39 @@ class StudentTest {
         System.out.println(reduceIsLikeSpringBootTeachers);
 
     }
+
+    @Test
+    void optionalTest() {
+        //optional 사용
+        //DB에서 select되어 값이 있는 상태
+        Optional<Teacher> optionalTeacher = Optional.of(new Teacher("김경록", true, true));
+        Optional<Teacher> emptyTeacher = Optional.empty();
+
+        //리스트의 경우
+        List<Teacher> teachers = new ArrayList<>();
+        teachers.size(); // -> 값이 없으면 0으로 출력, optional은 null
+
+        //값이 있는 경우
+        Teacher teacher = optionalTeacher.get();
+        System.out.println(teacher);
+
+        //값이 없는 경우, No value present 에러가 남.
+        //emptyTeacher.get();
+
+        // 에러가 나기때문에 에러를 던져줌
+        //Teacher teacher2 =emptyTeacher.orElseThrow(RuntimeException::new);
+        //Teacher teacher3 =emptyTeacher.orElseThrow(() -> new RuntimeException());
+
+        // 값이 있는 경우 무언가 처리 하고 싶을 때
+        // 존재하는 경우 RuntimeException 에러가 나면서 이름이 출력됨.
+        //optionalTeacher.ifPresent(sth -> {
+        //    throw new RuntimeException(sth.getName());
+        //});
+
+        // .ofNullable, orElse() 사용하기
+        Optional<Teacher> optionalTeacher2 = Optional.of(new Teacher(null, true, true));
+        String name = Optional.ofNullable(optionalTeacher2.get().getName()).orElse("이름이 없습니다.");
+        System.out.println(name);
+
+    }
 }
