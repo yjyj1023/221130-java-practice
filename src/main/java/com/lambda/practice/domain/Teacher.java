@@ -15,4 +15,8 @@ public class Teacher {
     public int cntNameDigit(){
         return this.name.length();
     }
+
+    public int getCnt(){
+        return 1;
+    }
 }

@@ -117,5 +117,26 @@ class StudentTest {
                 .map(strNum -> Integer.parseInt(strNum))
                 .reduce(0, (a, b) -> a+b); // 재귀와 비슷하다.
         System.out.println(reduceSum);
+
+
+        List<Teacher> teachers = new ArrayList<>();
+        Teacher kyeongrok = new Teacher("김경록", true, true);
+        Teacher kyeonghwan = new Teacher("고경환", true, false);
+        Teacher sujin = new Teacher("김수진", false, true);
+        Teacher sohyun = new Teacher("강소현", true, true);
+
+        teachers.add(kyeongrok);
+        teachers.add(kyeonghwan);
+        teachers.add(sujin);
+        teachers.add(sohyun);
+        teachers.add(new Teacher("김경", false, true));
+
+        //맵리듀스 사용해서 SpringBoot을 좋아하시는 선생님들의 수 구하기
+        int reduceIsLikeSpringBootTeachers = teachers.stream()
+                .filter(Teacher::isLikeSpringBoot)
+                .map(teacher -> teacher.getCnt())
+                .reduce(0, (a, b) -> a+b); // 재귀와 비슷하다.
+        System.out.println(reduceIsLikeSpringBootTeachers);
+
     }
 }
