@@ -93,5 +93,7 @@ class StudentTest {
                 .filter(Teacher::isLikeSpringBoot)
                 .map(Teacher::cntNameDigit)
                 .collect(Collectors.toList());
+
+        System.out.println(digitsOfNames);
     }
 }
