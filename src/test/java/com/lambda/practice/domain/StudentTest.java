@@ -3,6 +3,7 @@ package com.lambda.practice.domain;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -64,5 +65,14 @@ class StudentTest {
         // 숫자 num을 넣으면 10보다 큰지 true,false로 리턴 해주는 내장 인터페이스
         Predicate<Integer> predicate = num -> num>10;
         System.out.println(predicate.test(10));
+    }
+
+    @Test
+    void map() {
+        // 문자열 list -> Integer list
+        String[] list = {"1", "2", "3"};
+        List<Integer> nums = Arrays.stream(list)
+                .map(strNum -> Integer.parseInt(strNum))
+                .collect(Collectors.toList());
     }
 }
