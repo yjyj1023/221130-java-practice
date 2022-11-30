@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class StudentTest {
 
     @Test
-    public void dummy() {
+    void name() {
         List<Teacher> teachers = new ArrayList<>();
         Teacher kyeongrok = new Teacher("김경록", true, true);
         Teacher kyeonghwan = new Teacher("고경환", true, false);
@@ -51,5 +53,16 @@ class StudentTest {
         for(String teacherName: likeSpringBootTeachers){
             System.out.println(teacherName);
         }
+
+        //optional 사용
+        Optional<Teacher> optionalTeacher = Optional.of(kyeongrok);
+        optionalTeacher.orElseThrow(() -> new RuntimeException());
+    }
+
+    @Test
+    void predicateTest() {
+        // 숫자 num을 넣으면 10보다 큰지 true,false로 리턴 해주는 내장 인터페이스
+        Predicate<Integer> predicate = num -> num>10;
+        System.out.println(predicate.test(10));
     }
 }
