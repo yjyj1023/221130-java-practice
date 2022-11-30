@@ -96,4 +96,26 @@ class StudentTest {
 
         System.out.println(digitsOfNames);
     }
+
+    @Test
+    void reduce() {
+
+        String[] list = {"1", "2", "3"};
+        List<Integer> nums = Arrays.stream(list)
+                .map(strNum -> Integer.parseInt(strNum))
+                .collect(Collectors.toList());
+
+        //그냥 list 합 구하기
+        int sum = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            sum += nums.get(i);
+        }
+        System.out.println(sum);
+
+        //맵리듀스 사용해서 list 합 구하기
+        int reduceSum = Arrays.stream(list)
+                .map(strNum -> Integer.parseInt(strNum))
+                .reduce(0, (a, b) -> a+b); // 재귀와 비슷하다.
+        System.out.println(reduceSum);
+    }
 }
