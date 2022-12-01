@@ -15,4 +15,13 @@ public class ExceptionManager {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(e.getMessage());
     }
+
+    @ExceptionHandler(HospitalException.class)
+    public ResponseEntity<?> HospitalExceptionHandler(HospitalException hospitalException){
+        //
+        return ResponseEntity.status(hospitalException.getErrorCode().getHttpStatus())
+                .body(hospitalException.getMessage());
+    }
+
+
 }
