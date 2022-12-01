@@ -153,7 +153,7 @@ class StudentTest {
 
         //값이 있는 경우
         Teacher teacher = optionalTeacher.get();
-        System.out.println(teacher);
+        //System.out.println(teacher);
 
         //값이 없는 경우, No value present 에러가 남.
         //emptyTeacher.get();

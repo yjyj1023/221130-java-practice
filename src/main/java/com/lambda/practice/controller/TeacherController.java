@@ -16,6 +16,7 @@ public class TeacherController {
 
     @GetMapping
     public String get(){
+        teacherService.world();
         return "Hello";
     }
 }
