@@ -20,7 +20,7 @@ public class ExceptionManager {
     public ResponseEntity<?> HospitalExceptionHandler(HospitalException hospitalException){
         //
         return ResponseEntity.status(hospitalException.getErrorCode().getHttpStatus())
-                .body(hospitalException.getMessage());
+                .body(hospitalException.getErrorCode().name()+ " " + hospitalException.getMessage());
     }
 
 
